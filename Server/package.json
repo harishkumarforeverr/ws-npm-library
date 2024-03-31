@@ -1,0 +1,45 @@
+{
+  "name": "auth",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "devPM2": "pm2 start ./bin/www --name 'user_api_uat1' -i max",
+    "PM2Reload": "pm2 reload user_api_uat1"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^7.2.6",
+    "aws-sdk": "^2.1132.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "~1.4.4",
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-async-errors": "^3.1.1",
+    "express-rate-limit": "^5.2.6",
+    "express-validator": "^6.6.1",
+    "http-errors": "~1.6.3",
+    "jsonschema": "^1.2.6",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.20",
+    "log4js": "^6.3.0",
+    "mongoose": "^5.10.5",
+    "mongoose-autopopulate": "^0.12.2",
+    "morgan": "~1.9.1",
+    "nanoid": "^3.1.23",
+    "nodemailer": "^6.4.11",
+    "requestify": "^0.2.5",
+    "stripe": "^8.115.0",
+    "swagger-ui-express": "^4.6.3",
+    "twilio": "^3.66.1",
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.6",
+    "validator": "^13.1.17",
+    "ws": "^8.16.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
