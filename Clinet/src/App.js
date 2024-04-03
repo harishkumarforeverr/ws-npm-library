@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Button, List, Avatar, Input } from "antd";
-
+import { DummyUserList, getDummyUserList } from "./constants/dummyData";
 import "./App.scss";
 import { currentUserKeyLocalKey } from "./Common/constant";
 const WebSocketComponent = () => {
   const [message, setMessage] = useState("");
+  const [ActiveUser, setActiveUser] = useState({});
   const [receivedMessages, setreceivedMessages] = useState([]);
   const [ws, setWs] = useState(null);
   let user = JSON.parse(localStorage.getItem(currentUserKeyLocalKey));
@@ -16,14 +17,14 @@ const WebSocketComponent = () => {
   };
   useEffect(() => {
     const newWs = new WebSocket("ws://localhost:8080");
+    newWs.userId = user._id;
     setWs(newWs);
-
     newWs.onopen = () => {
       newWs.send(JSON.stringify(prepareObj()));
     };
-
     newWs.onmessage = (event) => {
       const data = JSON.parse(event.data);
+      console.log("datadatadata".data);
       setreceivedMessages(data);
     };
 
@@ -45,7 +46,27 @@ const WebSocketComponent = () => {
   };
   return (
     <div>
-      <h1>WebSocket Component</h1>
+      <h1>
+        WebSocket Component : {user.firstName} {user?._id}
+      </h1>
+      <div>
+        {DummyUserList?.map((value) => {
+          return (
+            <div>
+              {value}{" "}
+              <Button
+                type={ActiveUser.firstName === value && "primary"}
+                onClick={() => {
+                  let sender = getDummyUserList(value);
+                  setActiveUser(sender);
+                }}
+              >
+                Active
+              </Button>
+            </div>
+          );
+        })}
+      </div>
       <div className="MessageTyping">
         <Input
           value={message}
