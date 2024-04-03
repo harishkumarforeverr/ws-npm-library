@@ -6,7 +6,7 @@ const WebSocketComponent = () => {
   const userId = localStorage.getItem("userId") || "";
 
   useEffect(() => {
-    const newWs = new WebSocket("ws://localhost:3000");
+    const newWs = new WebSocket("ws://localhost:8080");
     setWs(newWs);
 
     newWs.onopen = () => {
